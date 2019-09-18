@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+     16 sept. 2019 23:55:52                                                        
+
+     project    
+     description
+                   
+     briac                                                                
+     ====================================================================== -->
+<project name="project" default="default">
+    <description>
+            description
+    </description>
+
+    <!-- ================================= 
+          target: default              
+         ================================= -->
+    <target name="default" description="description">
+    	<property name="glosssary.custom" value="omegat-plugin-custom-glossary-1.0.0.jar"/>
+    	<property name="glosssary.dgt" value="omegat-plugin-dgt-glossary-1.0.1.jar"/>
+
+        <jar destfile="build/libs/${glosssary.custom}">
+        	<manifest>
+        		<attribute name="OmegaT-Plugins" value="net.briac.omegat.CustomGlossary"/>
+        		<attribute name="Plugin-Version" value="1.0.0"/>
+        		<attribute name="Plugin-Name" value="Custom Glossary Plugin"/>
+        		<attribute name="Main-Class" value="net.briac.omegat.CustomGlossary"/>
+        	</manifest>
+        	<fileset dir="bin" includes="net/briac/omegat/**"/>        
+        </jar>
+    	<copy file="build/libs/${glosssary.custom}" todir="C:/Users/briac/AppData/Roaming/OmegaT/plugins/"/>
+    	
+        <jar destfile="build/libs/${glosssary.dgt}">
+        	<manifest>
+        		<attribute name="OmegaT-Plugins" value="org.omegat.dgt.DGTGlossary"/>
+        		<attribute name="Plugin-Version" value="1.0.1"/>
+        		<attribute name="Plugin-Name" value="Custom DGT Glossary Plugin"/>
+        	</manifest>
+        	<fileset dir="bin" includes="org/omegat/dgt/**"/>        
+        </jar>
+    	<copy file="build/libs/${glosssary.dgt}" todir="C:/Users/briac/AppData/Roaming/OmegaT/plugins/"/>
+    	
+    </target>
+
+
+</project>
